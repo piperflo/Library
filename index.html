@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+    <div id="library">
+        <h2>My library</h2>
+        <p>Please click "Add Book" if you want to add a book to your library!!!</p>
+        <div id="books">
+            
+        </div>
+        <div id="modal-form">
+            <form>
+                <div class="card">
+                    <span class="close">X</span>
+                    <label for="title">Input book title?</label>
+                    <span><input type="text" id="input-title" name="input-title" value=""/></span>
+
+                    <label for="author">Who is the author?</label>
+                    <span><input type="text" id="input-author" name="input-author"/></span>
+
+                    <label for="pages">How many pages does it have?</label>
+                    <span><input type="number" id="input-pages" name="input-pages"/></span>
+
+                    <label>Have you finished the book?</label>
+                    <div>
+                        <label for="yes">Yes</label>
+                        <span><input type="radio" id="yes" name="yes-no" value="yes"/></span>
+                    </div>
+                    <div>
+                        <label for="no">No</label>
+                        <span><input type="radio" id="no" name="yes-no" value="no"/></span>
+                    </div>
+                    <label for="image-url">Input book image url</label>
+                    <input type="url" id="image-url" name="image-url"/>
+                    <button id="add-book">Add Book</button>
+                </div>               
+            </form>
+        </div>
+        <button id="add-book-form">Add Book</button>
+    </div>
+</body>
+<script src="Library.js"></script>
+</html>
