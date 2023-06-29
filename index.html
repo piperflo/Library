@@ -17,11 +17,11 @@
             <form>
                 <div class="card">
                     <span class="close">X</span>
-                    <label for="title">Input book title?</label>
-                    <span><input type="text" id="input-title" name="input-title" value=""/></span>
+                    <label for="title">Input book title?<span>*</span></label>
+                    <span><input type="text" id="input-title" name="input-title" value="" required/></span>
 
-                    <label for="author">Who is the author?</label>
-                    <span><input type="text" id="input-author" name="input-author"/></span>
+                    <label for="author">Who is the author?<span>*</span></label>
+                    <span><input type="text" id="input-author" name="input-author" required/></span>
 
                     <label for="pages">How many pages does it have?</label>
                     <span><input type="number" id="input-pages" name="input-pages"/></span>
@@ -36,7 +36,7 @@
                         <span><input type="radio" id="no" name="yes-no" value="no"/></span>
                     </div>
                     <label for="image-url">Input book image url</label>
-                    <input type="url" id="image-url" name="image-url"/>
+                    <span><input type="url" id="image-url" name="image-url"/></span>
                     <button id="add-book">Add Book</button>
                 </div>               
             </form>
