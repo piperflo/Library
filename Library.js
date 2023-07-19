@@ -45,18 +45,30 @@ function addBookToLibrary(event){
     }
     createBook(url, title, author, pages, read);
     const Book = new book(url, title, author, pages, read);
+    var bookObj = {
+        url: url,
+        title: title,
+        author: author,
+        pages: pages,
+        read: read
+    }
+    localStorage.setItem(title, JSON.stringify(bookObj));
+    console.log(localStorage);
     myLibrary.push(Book);
-    //console.log(bookCount);
-    //bookCount++;
 }
-
+function setStorage(){
+    Object.keys(localStorage).forEach((key) => {
+        items = JSON.parse(localStorage.getItem(key));
+        myLibrary.push(items);
+    });
+    console.log(localStorage);
+}
 function createBook(url, title, author, pages, read){
     console.log("Entered createBook");
     const book = document.createElement('div');
     book.setAttribute('class', 'book');
     book.setAttribute('id', title);
     book.setAttribute('data-index', bookCount);
-    //book.setAttribute('onclick', "deleteBook(event, book, bookCount);");
 
     this.title = document.createElement('span');
     this.title.setAttribute('class', 'title');
@@ -86,19 +98,12 @@ function createBook(url, title, author, pages, read){
     this.delete.textContent = "Delete Book";
     this.delete.setAttribute('onclick', "deleteBook(event, this);");
 
-    /*
-    const status = document.createElement('button');
-    status.setAttribute('class', 'status');
-    status.textContent = "Change Status";
-    status.setAttribute('onclick', "changeStatus(event, this);");
-*/
     book.appendChild(this.url);
     book.appendChild(this.title);
     book.appendChild(this.author);
     book.appendChild(this.pages);
     book.appendChild(this.read);
     book.appendChild(this.delete);
-    //book.appendChild(status);
     books.appendChild(book);
     bookCount++;
 }
@@ -109,6 +114,7 @@ function deleteBook(event, b){
     let id = book.getAttribute('id');
     const element = document.getElementById(id);
     element.remove();
+    localStorage.removeItem(id);
     myLibrary.splice(index, 1);
     bookCount--;
 }
@@ -127,8 +133,8 @@ addBook.addEventListener("click", addBookToLibrary, false);
 const harryPotter = new book("https://wallpapercave.com/wp/wp6289310.jpg", "Harry Potter and the sorcerer's stone", "J.K. Rowling", 309, "yes");
 myLibrary.push(harryPotter);
 
+setStorage();
 myLibrary.forEach(function (book, index) {
     createBook(book.url, book.title, book.author, book.pages, book.read);
-    console.log(book.info());
 });
 
